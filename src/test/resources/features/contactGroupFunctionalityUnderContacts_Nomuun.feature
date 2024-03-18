@@ -11,4 +11,3 @@ Feature: Contact Group Functionality under Contacts Module
 
 
   Scenario: User creates a new group under Contacts Module
-    

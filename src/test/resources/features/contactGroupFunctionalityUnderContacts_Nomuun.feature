@@ -11,3 +11,22 @@ Feature: Contact Group Functionality under Contacts Module
 
 
   Scenario: User creates a new group under Contacts Module
+    When user click on add new group
+    And user add "Cinema" for new group
+    Then user should see "Cinema" under groups
+
+  Scenario: User can see all the available groups name through the group’s dropdown menu
+  existing in the contact’s own info menu
+    When user go to new contact
+    And user click on groups option
+    Then group names should be matching with group's dropdown menu
+
+  Scenario: User can add a new property as “Anniversary” to the contact’s info page
+  from the “Add new property” dropdown menu.
+
+
+
+
+
+
+

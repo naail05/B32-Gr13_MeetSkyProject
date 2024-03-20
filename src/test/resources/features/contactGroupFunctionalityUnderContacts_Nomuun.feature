@@ -1,4 +1,4 @@
-@tasks
+@contacts
 Feature: Contact Group Functionality under Contacts Module
 
   User Story:
@@ -23,7 +23,10 @@ Feature: Contact Group Functionality under Contacts Module
 
   Scenario: User can add a new property as “Anniversary” to the contact’s info page
   from the “Add new property” dropdown menu.
-
+    When user go to new contact
+    And user click on add new property
+    And user add "Anniversary"
+    Then user should see "Anniversary" in new contact properties.
 
 
 

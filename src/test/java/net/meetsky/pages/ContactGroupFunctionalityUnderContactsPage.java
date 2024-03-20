@@ -19,6 +19,9 @@ public class ContactGroupFunctionalityUnderContactsPage {
     public WebElement inputNewGroupName;
 
 
+    @FindBy(xpath = "(//span[@class='app-navigation-entry__title'])[3]")
+    public WebElement groupListUnderGroup;
+
 
 
     public void findGroupName(String text){
@@ -26,11 +29,24 @@ public class ContactGroupFunctionalityUnderContactsPage {
         WebElement element = Driver.getDriver().findElement(By.xpath(locator));
     }
 
+
     @FindBy(id = "new-contact-button")
     public WebElement addNewContactLink;
 
-    @FindBy(xpath = "//span[@class='multiselect__tag']")
-    public WebElement groupsList;
+    @FindBy(xpath = "(//input[@class='multiselect__input'])[5]")
+    public WebElement addGroups;
+
+    @FindBy(xpath = "(//ul[@class='multiselect__content'])[6]")
+    public WebElement groupsListUnderNewContact;
+
+    @FindBy(xpath = "(//input[@class='multiselect__input'])[6]")
+    public WebElement newProperty;
+
+    @FindBy(xpath = "//span[.='Annive']")
+    public WebElement anniversaryDropdown;
+
+    @FindBy(xpath = "(//div[@class='property__row'])[11]")
+    public WebElement anniversaryProperty;
 
 
 

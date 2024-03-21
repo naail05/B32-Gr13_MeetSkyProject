@@ -5,6 +5,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class ContactGroupFunctionalityUnderContactsPage {
 
@@ -33,10 +37,10 @@ public class ContactGroupFunctionalityUnderContactsPage {
     @FindBy(id = "new-contact-button")
     public WebElement addNewContactLink;
 
-    @FindBy(xpath = "(//input[@class='multiselect__input'])[5]")
+    @FindBy(xpath = "(//div[@class='multiselect__tags-wrap'])[6]")
     public WebElement addGroups;
 
-    @FindBy(xpath = "(//ul[@class='multiselect__content'])[6]")
+    @FindBy(xpath = "(//ul[@class='multiselect__content'])[6]/li")
     public WebElement groupsListUnderNewContact;
 
     @FindBy(xpath = "(//input[@class='multiselect__input'])[6]")
@@ -53,6 +57,7 @@ public class ContactGroupFunctionalityUnderContactsPage {
 
     @FindBy(xpath = "//button[@aria-controls='menu-dywpj']")
     public WebElement buttonActions;
+
 
 
 

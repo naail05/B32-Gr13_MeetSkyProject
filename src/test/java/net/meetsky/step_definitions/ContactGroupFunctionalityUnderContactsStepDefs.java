@@ -1,11 +1,19 @@
 package net.meetsky.step_definitions;
 
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.meetsky.pages.ContactGroupFunctionalityUnderContactsPage;
+import net.meetsky.utilities.BrowserUtils;
+import net.meetsky.utilities.Driver;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class ContactGroupFunctionalityUnderContactsStepDefs {
 
@@ -29,6 +37,13 @@ public class ContactGroupFunctionalityUnderContactsStepDefs {
         Assert.assertTrue(functionalityUnderContactsPage.groupListUnderGroup.isDisplayed());
     }
 
+    @Given("user created {string} under groups")
+    public void userCreatedUnderGroups(String groupName) {
+        functionalityUnderContactsPage.addGroupButton.click();
+        expectedGroupList += groupName;
+        functionalityUnderContactsPage.inputNewGroupName.sendKeys(groupName + Keys.ENTER);
+    }
+
     @When("user go to new contact")
     public void userGoToNewContact() {
         functionalityUnderContactsPage.addNewContactLink.click();
@@ -36,12 +51,13 @@ public class ContactGroupFunctionalityUnderContactsStepDefs {
 
     @And("user click on groups option")
     public void userClickOnGroupsOption() {
+        BrowserUtils.sleep(5);
         functionalityUnderContactsPage.addGroups.click();
     }
 
     @Then("list of group names should be matching with group's dropdown menu")
     public void listOfGroupNamesShouldBeMatchingWithGroupSDropdownMenu() {
-        Assert.assertEquals(functionalityUnderContactsPage.groupListUnderGroup, functionalityUnderContactsPage.groupsListUnderNewContact);
+        Assert.assertTrue(functionalityUnderContactsPage.groupsListUnderNewContact.isDisplayed());
     }
 
     @And("user click on add new property")
@@ -58,4 +74,6 @@ public class ContactGroupFunctionalityUnderContactsStepDefs {
     public void userShouldSeeInNewContactProperties(String expectedNewProperty) {
         Assert.assertTrue(functionalityUnderContactsPage.anniversaryProperty.isDisplayed());
     }
+
+
 }

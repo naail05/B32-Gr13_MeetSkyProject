@@ -43,10 +43,16 @@ public class ContactGroupFunctionalityUnderContactsPage {
     public WebElement newProperty;
 
     @FindBy(xpath = "//span[.='Annive']")
-    public WebElement anniversaryDropdown;
+    public WebElement addAnniversary;
 
     @FindBy(xpath = "(//div[@class='property__row'])[11]")
     public WebElement anniversaryProperty;
+
+    @FindBy(xpath = "//*[@id='submit-form']")
+    public WebElement inputSubmitForm;
+
+    @FindBy(xpath = "//button[@aria-controls='menu-dywpj']")
+    public WebElement buttonActions;
 
 
 

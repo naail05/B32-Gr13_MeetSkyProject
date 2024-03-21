@@ -39,8 +39,8 @@ public class ContactGroupFunctionalityUnderContactsStepDefs {
         functionalityUnderContactsPage.addGroups.click();
     }
 
-    @Then("group names should be matching with group's dropdown menu")
-    public void groupNamesShouldBeMatchingWithGroupSDropdownMenu() {
+    @Then("list of group names should be matching with group's dropdown menu")
+    public void listOfGroupNamesShouldBeMatchingWithGroupSDropdownMenu() {
         Assert.assertEquals(functionalityUnderContactsPage.groupListUnderGroup, functionalityUnderContactsPage.groupsListUnderNewContact);
     }
 
@@ -51,9 +51,11 @@ public class ContactGroupFunctionalityUnderContactsStepDefs {
 
     @And("user add {string}")
     public void userAdd(String newProperty) {
+        functionalityUnderContactsPage.newProperty.click();
     }
 
     @Then("user should see {string} in new contact properties.")
     public void userShouldSeeInNewContactProperties(String expectedNewProperty) {
+        Assert.assertTrue(functionalityUnderContactsPage.anniversaryProperty.isDisplayed());
     }
 }

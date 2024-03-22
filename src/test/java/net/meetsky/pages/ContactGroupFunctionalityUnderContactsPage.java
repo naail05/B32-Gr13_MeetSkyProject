@@ -9,8 +9,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
-public class ContactGroupFunctionalityUnderContactsPage {
+public class ContactGroupFunctionalityUnderContactsPage extends BasePage{
 
     public ContactGroupFunctionalityUnderContactsPage(){
         PageFactory.initElements(Driver.getDriver(), this);
@@ -26,12 +27,9 @@ public class ContactGroupFunctionalityUnderContactsPage {
     @FindBy(xpath = "(//span[@class='app-navigation-entry__title'])[3]")
     public WebElement groupListUnderGroup;
 
+    @FindBy(xpath = "//li[@id='newgroup']//following-sibling::li//span[@title]")
+    public List<WebElement> allGroupsList;
 
-
-    public void findGroupName(String text){
-        String locator = "//span[@title='\"+text+\"']";
-        WebElement element = Driver.getDriver().findElement(By.xpath(locator));
-    }
 
 
     @FindBy(id = "new-contact-button")
@@ -40,23 +38,17 @@ public class ContactGroupFunctionalityUnderContactsPage {
     @FindBy(xpath = "(//div[@class='multiselect__tags-wrap'])[6]")
     public WebElement addGroups;
 
-    @FindBy(xpath = "(//ul[@class='multiselect__content'])[6]/li")
-    public WebElement groupsListUnderNewContact;
+    @FindBy(xpath = "(//ul[@class='multiselect__content'])[6]//li//span[starts-with(@class,'name-parts')]")
+    public List<WebElement> groupsListUnderNewContact;
 
     @FindBy(xpath = "(//input[@class='multiselect__input'])[6]")
     public WebElement newProperty;
 
-    @FindBy(xpath = "//span[.='Annive']")
-    public WebElement addAnniversary;
 
     @FindBy(xpath = "(//div[@class='property__row'])[11]")
     public WebElement anniversaryProperty;
 
-    @FindBy(xpath = "//*[@id='submit-form']")
-    public WebElement inputSubmitForm;
 
-    @FindBy(xpath = "//button[@aria-controls='menu-dywpj']")
-    public WebElement buttonActions;
 
 
 

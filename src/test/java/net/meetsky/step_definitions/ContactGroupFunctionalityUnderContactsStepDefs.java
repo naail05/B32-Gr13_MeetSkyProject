@@ -10,20 +10,27 @@ import net.meetsky.utilities.Driver;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
 
 public class ContactGroupFunctionalityUnderContactsStepDefs {
 
     ContactGroupFunctionalityUnderContactsPage functionalityUnderContactsPage = new ContactGroupFunctionalityUnderContactsPage();
+
     @When("user click on add new group")
     public void user_click_on_add_new_group() {
         functionalityUnderContactsPage.addGroupButton.click();
     }
 
     String expectedGroupList;
+
     @When("user add {string} for new group")
     public void user_add_for_new_group(String groupName) {
         expectedGroupList += groupName;
@@ -38,11 +45,11 @@ public class ContactGroupFunctionalityUnderContactsStepDefs {
     }
 
     @Given("user created {string} under groups")
-    public void userCreatedUnderGroups(String groupName) {
+    public void userCreatedUnderGroups(String newGroup) {
         functionalityUnderContactsPage.addGroupButton.click();
-        expectedGroupList += groupName;
-        functionalityUnderContactsPage.inputNewGroupName.sendKeys(groupName + Keys.ENTER);
+        functionalityUnderContactsPage.inputNewGroupName.sendKeys(newGroup + Keys.ENTER);
     }
+
 
     @When("user go to new contact")
     public void userGoToNewContact() {
@@ -55,12 +62,46 @@ public class ContactGroupFunctionalityUnderContactsStepDefs {
         functionalityUnderContactsPage.addGroups.click();
     }
 
+    WebDriverWait webDriverWait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(5));
+
+    /*@And("get list of group names under groups")
+    public void getListOfGroupNamesUnderGroups(List<String> expectedGroupList) {
+        List<String> actualGroupList = new ArrayList<>();
+
+        for (WebElement each : functionalityUnderContactsPage.allGroupsList) {
+            actualGroupList.add(each.getText());
+        }
+        Assert.assertEquals(expectedGroupList, actualGroupList);
+    }
+
+
+    @And("get list of group names under new contact group")
+    public void getListOfGroupNamesUnderNewContactGroup(List<String> expectedContactGroupList) {
+        List<String> actualContactGroupList = new ArrayList<>();
+
+
+        for (WebElement each : functionalityUnderContactsPage.groupsListUnderNewContact) {
+            actualContactGroupList.add(each.getText());
+        }
+        Assert.assertEquals(expectedContactGroupList, actualContactGroupList);
+    }
+
+     */
+
     @Then("list of group names should be matching with group's dropdown menu")
     public void listOfGroupNamesShouldBeMatchingWithGroupSDropdownMenu() {
-        String listOfGroupsUnderGroups = functionalityUnderContactsPage.groupListUnderGroup.getText();
-        String listOfGroupsUnderNewContactGroups = functionalityUnderContactsPage.groupsListUnderNewContact.getText();
-        Assert.assertEquals(listOfGroupsUnderGroups, listOfGroupsUnderNewContactGroups);
-    }
+            List<String> expectedGroupList = BrowserUtils.getElementsText(functionalityUnderContactsPage.allGroupsList);
+        System.out.println("expectedGroupList = " + expectedGroupList);
+
+            List<String> actualGroupList = BrowserUtils.getElementsText(functionalityUnderContactsPage.groupsListUnderNewContact);
+        System.out.println("actualGroupList = " + actualGroupList);
+
+        Assert.assertEquals(expectedGroupList,actualGroupList);
+
+
+        }
+
+
 
     @And("user click on add new property")
     public void userClickOnAddNewProperty() {
@@ -78,4 +119,18 @@ public class ContactGroupFunctionalityUnderContactsStepDefs {
     }
 
 
+    @Given("user creates test data under contact groups")
+    public void userCreatesTestDataUnderContactGroups() {
+        functionalityUnderContactsPage.addGroupButton.click();
+
+        for (int i = 1; i <= 3; i++){
+            String groupName = "Group" + i ;
+            functionalityUnderContactsPage.inputNewGroupName.sendKeys( groupName + Keys.ENTER);
+        }
+    }
 }
+
+
+
+
+

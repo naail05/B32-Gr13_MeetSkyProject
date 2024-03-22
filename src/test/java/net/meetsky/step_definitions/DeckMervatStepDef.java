@@ -59,14 +59,18 @@ public class DeckMervatStepDef extends BasePage {
 
     @When("the user creates a new list {string}")
     public void the_user_creates_a_new_list(String sprint2) {
-        BrowserUtils.waitFor(2);
-        deckPage.listName.sendKeys("sprint2" + Keys.ENTER);
+        BrowserUtils.waitForClickablility(deckPage.addList,10);
+        deckPage.addList.click();
+                deckPage.listName.sendKeys("sprint2" + Keys.ENTER);
 
 
     }
     @Then("the user should see the new list created")
     public void the_user_should_see_the_new_list_created() {
-        System.out.println("Use sees sprint2 in the new list");
+      //  System.out.println("Use sees sprint2 in the new list");
+        String expectedSprint2Text = "sprint2";
+        String actualSprint2Text = deckPage.sprint2.getText();
+        Assert.assertEquals(expectedSprint2Text,actualSprint2Text);
 
     }
    // @Given("user on the sprint2")
@@ -109,6 +113,51 @@ public class DeckMervatStepDef extends BasePage {
     public void userOpensTheNavigationBoardMenu() {
         deckPage.openNavigation.click();
     }
+
+
+    @And("user on board personal page")
+    public void userOnBoardPersonalPage() {
+        deckPage.openNavigation.click();
+        deckPage.boardPersonal.click();
+    }
+    @Given("user clicks on new card2")
+    public void user_clicks_on_new_card2() {
+        deckPage.newCard2.click();
+        deckPage.closePage.click();
+
+    }
+    @Then("successfully sees new card2 details")
+    public void successfully_sees_new_card2_details() {
+        System.out.println("User sees the card details ");
+
+    }
+    @Then("user clicks on he three dots")
+    public void user_clicks_on_he_three_dots() {
+        deckPage.cardMenu.click();
+
+    }
+    @Then("user clicks on Assign to me")
+    public void user_clicks_on_assign_to_me() {
+        //BrowserUtils.waitForClickablility(deckPage.assignToMe,10);
+        deckPage.assignToMe.click();
+        //deckPage.resetElementStateIfUnassigned();
+
+    }
+
+    @Then("user sees his profile icons next the three dots")
+    public void userSeesHisProfileIconsNextTheThreeDots() {
+        //System.out.println("User sees his profile icon");
+        //String expectedAssignee ="Unassign myself";
+        //String actualAssignee= deckPage.unAssign.getText();
+        //BrowserUtils.waitFor(5);
+        //Assert.assertEquals(expectedAssignee,actualAssignee);
+        Assert.assertTrue(deckPage.assigneeIcon.isDisplayed());
+
+        deckPage.cardMenu.click();
+        deckPage.unAssign.click();
+    }
+
+
 }
 
 

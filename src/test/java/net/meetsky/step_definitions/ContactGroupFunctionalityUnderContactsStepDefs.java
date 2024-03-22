@@ -57,7 +57,9 @@ public class ContactGroupFunctionalityUnderContactsStepDefs {
 
     @Then("list of group names should be matching with group's dropdown menu")
     public void listOfGroupNamesShouldBeMatchingWithGroupSDropdownMenu() {
-        Assert.assertTrue(functionalityUnderContactsPage.groupsListUnderNewContact.isDisplayed());
+        String listOfGroupsUnderGroups = functionalityUnderContactsPage.groupListUnderGroup.getText();
+        String listOfGroupsUnderNewContactGroups = functionalityUnderContactsPage.groupsListUnderNewContact.getText();
+        Assert.assertEquals(listOfGroupsUnderGroups, listOfGroupsUnderNewContactGroups);
     }
 
     @And("user click on add new property")

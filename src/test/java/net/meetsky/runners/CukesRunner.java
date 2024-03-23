@@ -14,8 +14,8 @@ import org.junit.runner.RunWith;
         },
         features = "src/test/resources/features",
         glue = "net/meetsky/step_definitions",
-        dryRun = true,
-        tags = "@tasks",
+        dryRun = false,
+        tags = "@B32G13-158",
         publish = true //generating a report with public link
 )
 public class CukesRunner {}

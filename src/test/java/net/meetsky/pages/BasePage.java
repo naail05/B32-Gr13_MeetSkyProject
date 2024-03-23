@@ -58,7 +58,7 @@ public abstract class BasePage {
     @FindBy(xpath = "(//a[contains(.,'Notes')])[1]")
     public WebElement notes;
 
-    @FindBy(xpath = "(//a[contains(.,'Contacts')])[1]")
+    @FindBy(xpath ="//a[.//*[@id='invertMenuMain-deck']]")
     public WebElement deck;
 
     @FindBy(id = "expand")

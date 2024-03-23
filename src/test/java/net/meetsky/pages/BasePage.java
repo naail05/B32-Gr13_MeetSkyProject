@@ -22,7 +22,7 @@ public abstract class BasePage {
     }
 
     public void clickMenuByText(String text){
-        String locator = "(//a[contains(.,'"+text+"')])[1]";
+        String locator = "(//a[contains(.,'"+text+"')])[4]";
        WebElement element = Driver.getDriver().findElement(By.xpath(locator));
        element.click();
 

@@ -1,14 +1,18 @@
 package net.meetsky.step_definitions;
 
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
 import net.meetsky.pages.LoginPage;
 
 import io.cucumber.java.en.Given;
 
 
 public class LoginStepDefs {
-    
+
+
+
     LoginPage loginPage=new LoginPage();
+
 
 
     @Given("the user is on the login page")
@@ -23,7 +27,5 @@ public class LoginStepDefs {
         loginPage.loginFromFeature(username,password);
 
     }
-
-
 
 }

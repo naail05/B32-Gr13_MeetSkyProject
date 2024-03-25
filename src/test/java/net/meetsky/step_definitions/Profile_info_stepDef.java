@@ -1,18 +1,16 @@
 package net.meetsky.step_definitions;
 
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.meetsky.pages.ProfileInfoPage;
 import net.meetsky.utilities.BrowserUtils;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
 
-public class Profile_infoStepDefinition {
+public class Profile_info_stepDef {
 
-  ProfileInfoPage infoPage = new ProfileInfoPage();
+    ProfileInfoPage infoPage = new ProfileInfoPage();
 
 
 
@@ -23,11 +21,11 @@ public class Profile_infoStepDefinition {
         infoPage.logoutButton.click();
     }
     @When("user click the view profile  link")
-   public void userClickTheViewProfileLink() {
+    public void userClickTheViewProfileLink() {
         BrowserUtils.waitForClickablility(infoPage.profileView,10);
-    infoPage.profileView.click();
+        infoPage.profileView.click();
 
-   }
+    }
     @And("user click to edit profile")
     public void userClickToEditProfile() {
         BrowserUtils.waitForClickablility(infoPage.linkEditProfile,10);
@@ -49,7 +47,7 @@ public class Profile_infoStepDefinition {
     }
 
 
- @Then("user enter email ID")
+    @Then("user enter email ID")
     public void user_enter_email_id() {
 
         infoPage.email.sendKeys("sayed@gmail.com");
@@ -68,11 +66,10 @@ public class Profile_infoStepDefinition {
     public void theMentionedLanguageShouldBeSelected() {
         BrowserUtils.waitForVisibility(infoPage.language,5);
 
-       // Assert.assertEquals("Nederlands",infoPage.language.getText());
+        // Assert.assertEquals("Nederlands",infoPage.language.getText());
         Assert.assertTrue(infoPage.language.getText().contains("Nederlands"));
 
     }
-
 
 
 }

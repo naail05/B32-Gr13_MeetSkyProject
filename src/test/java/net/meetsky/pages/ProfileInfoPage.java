@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class ProfileInfoPage extends BasePage {
+public class ProfileInfoPage {
 
     public ProfileInfoPage(){
 
@@ -19,13 +19,13 @@ public class ProfileInfoPage extends BasePage {
 
     @FindBy(xpath = "//a[@class='primary profile__header__container__edit-button']")
     public WebElement linkEditProfile;
-  //  @FindBy(xpath = "//a[contains(@class, 'edit')]")
+    //  @FindBy(xpath = "//a[contains(@class, 'edit')]")
     //public WebElement linkEditProfile;
 
     @FindBy(xpath = "//div[@class='user-status-menu-item__header-content-displayname']")
     public WebElement profileView;
 
-   // @FindBy(xpath = "(//div[contains(.,'View profile')])[4]")
+    // @FindBy(xpath = "(//div[contains(.,'View profile')])[4]")
     //public WebElement profileView;
 
     @FindBy(xpath = "//input[@id='displayname']")
@@ -35,14 +35,11 @@ public class ProfileInfoPage extends BasePage {
     public WebElement UserName;
 
     @FindBy(xpath = "//input[@id='email']")
-public WebElement email;
+    public WebElement email;
 
 
     @FindBy(xpath = "//select[@id='language']")
-public WebElement language;
-
-
+    public WebElement language;
 
 
 }
-

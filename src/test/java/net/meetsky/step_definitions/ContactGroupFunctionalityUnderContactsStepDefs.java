@@ -31,7 +31,7 @@ public class ContactGroupFunctionalityUnderContactsStepDefs {
 
     String expectedGroupList;
 
-    @When("user add {string} for new group")
+    @And("user add {string} for new group")
     public void user_add_for_new_group(String groupName) {
         expectedGroupList += groupName;
         functionalityUnderContactsPage.inputNewGroupName.sendKeys(groupName + Keys.ENTER);
@@ -44,10 +44,15 @@ public class ContactGroupFunctionalityUnderContactsStepDefs {
         Assert.assertTrue(functionalityUnderContactsPage.groupListUnderGroup.isDisplayed());
     }
 
-    @Given("user created {string} under groups")
-    public void userCreatedUnderGroups(String newGroup) {
+
+    @Given("user creates test data under contact groups")
+    public void userCreatesTestDataUnderContactGroups() {
         functionalityUnderContactsPage.addGroupButton.click();
-        functionalityUnderContactsPage.inputNewGroupName.sendKeys(newGroup + Keys.ENTER);
+
+        for (int i = 1; i <= 3; i++){
+            String groupName = "Group" + i ;
+            functionalityUnderContactsPage.inputNewGroupName.sendKeys( groupName + Keys.ENTER);
+        }
     }
 
 
@@ -64,7 +69,7 @@ public class ContactGroupFunctionalityUnderContactsStepDefs {
 
     WebDriverWait webDriverWait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(5));
 
-    
+
 
     @Then("list of group names should be matching with group's dropdown menu")
     public void listOfGroupNamesShouldBeMatchingWithGroupSDropdownMenu() {
@@ -97,15 +102,7 @@ public class ContactGroupFunctionalityUnderContactsStepDefs {
     }
 
 
-    @Given("user creates test data under contact groups")
-    public void userCreatesTestDataUnderContactGroups() {
-        functionalityUnderContactsPage.addGroupButton.click();
 
-        for (int i = 1; i <= 3; i++){
-            String groupName = "Group" + i ;
-            functionalityUnderContactsPage.inputNewGroupName.sendKeys( groupName + Keys.ENTER);
-        }
-    }
 }
 
 

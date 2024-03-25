@@ -64,29 +64,7 @@ public class ContactGroupFunctionalityUnderContactsStepDefs {
 
     WebDriverWait webDriverWait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(5));
 
-    /*@And("get list of group names under groups")
-    public void getListOfGroupNamesUnderGroups(List<String> expectedGroupList) {
-        List<String> actualGroupList = new ArrayList<>();
-
-        for (WebElement each : functionalityUnderContactsPage.allGroupsList) {
-            actualGroupList.add(each.getText());
-        }
-        Assert.assertEquals(expectedGroupList, actualGroupList);
-    }
-
-
-    @And("get list of group names under new contact group")
-    public void getListOfGroupNamesUnderNewContactGroup(List<String> expectedContactGroupList) {
-        List<String> actualContactGroupList = new ArrayList<>();
-
-
-        for (WebElement each : functionalityUnderContactsPage.groupsListUnderNewContact) {
-            actualContactGroupList.add(each.getText());
-        }
-        Assert.assertEquals(expectedContactGroupList, actualContactGroupList);
-    }
-
-     */
+    
 
     @Then("list of group names should be matching with group's dropdown menu")
     public void listOfGroupNamesShouldBeMatchingWithGroupSDropdownMenu() {

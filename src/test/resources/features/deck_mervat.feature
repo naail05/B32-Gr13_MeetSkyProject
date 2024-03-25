@@ -26,6 +26,17 @@ Scenario: User can create a new board
       And user clicks on Add card button
       Then user types "card name"
       And user should see the card name created
+      And user clicks on new card2
+      Then successfully sees new card2 details
+
+      @ac4
+      Scenario: User can assign any card/task to himself/herself by using the three dots on the related card
+       And user on board personal page
+       And user clicks on he three dots
+       And user clicks on Assign to me
+       Then user sees his profile icons next the three dots
+
+
 
 
 

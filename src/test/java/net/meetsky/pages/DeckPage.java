@@ -1,6 +1,8 @@
 package net.meetsky.pages;
 
+import net.meetsky.utilities.BrowserUtils;
 import net.meetsky.utilities.Driver;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -39,14 +41,66 @@ public class DeckPage extends BasePage{
 
     @FindBy(xpath = "(//div[@class='card-menu'])[3]")
     public WebElement cardMenu;
-    @FindBy(xpath = "//span[.='Assign to me']")
+    @FindBy(xpath = "//span[contains(.,'Assign to me')]")
     public WebElement assignToMe;
     @FindBy(xpath = "//span[@title='School']")
     public WebElement School;
 
-    @FindBy(xpath = "//div[@class='stack__header']/h3") ////h3[contains(text(),'sprint2')]
+    @FindBy(xpath = "//div[@class='stack__header']") ////h3[contains(text(),'sprint2')]
     public WebElement sprint2;
 
+    @FindBy(xpath ="(//div[@class='card-upper'])[3]" )
+    public WebElement newCard2;
 
 
-}
+    @FindBy(xpath = "//a[@class='app-sidebar__close has-tooltip']")
+    public WebElement closePage;
+
+    @FindBy(xpath = "(//img)[6]")
+    public WebElement profileImg;
+
+    @FindBy(xpath = "//span[.='Unassign myself']")
+    public WebElement unAssign;
+
+    @FindBy(id ="stack-add")
+    public WebElement addList;
+
+
+
+    @FindBy(xpath ="(//img[contains(@src,'Employee60')])[2]")
+    public WebElement assigneeIcon;
+    public void resetElementStateIfUnassigned() {
+
+        if (assignToMe.isEnabled() ) {
+            BrowserUtils.waitFor(5);
+           // BrowserUtils.waitFor(5);
+            assignToMe.click();}
+        else {
+            BrowserUtils.waitFor(7);
+            unAssign.click();
+            assignToMe.click();
+        }
+
+
+
+        }
+    public void resetElementStateIfUnassigned2() {
+        try {
+
+            if (unAssign.isDisplayed()) {
+                // Click unAssign to reset the state
+                unAssign.click();
+                assignToMe.click();
+            }else
+            assignToMe.click();
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
+    }
+
+    }
+
+
+
+

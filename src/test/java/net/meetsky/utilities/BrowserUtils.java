@@ -484,5 +484,18 @@ public class BrowserUtils {
         new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(time)).until(ExpectedConditions.presenceOfElementLocated(by));
     }
 
+    /**
+     * return a list of string from a list of elements
+     * @param list of webelements
+     * @param attribute
+     * @return list of string
+     */
+    public static List<String> getElementsText(List<WebElement> list, String attribute){
+        List<String> elemTexts = new ArrayList<>();
+        for (WebElement el : list){
+            elemTexts.add(el.getAttribute(attribute).trim());
+        }
+        return elemTexts;
+    }
 
 }
